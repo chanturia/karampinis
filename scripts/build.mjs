@@ -58,7 +58,7 @@ function footer(current) {
   return `<footer class="site-footer"><div class="container">
     <div class="footer-main"><a class="brand footer-brand" href="index.html"><img src="assets/images/logo.png" width="400" height="104" alt="Καραμπίνης Κωνσταντίνος" loading="lazy"></a><p>Σχολή Οδηγών · Παλλήνη<br><span>Το επόμενο βήμα σου, στον δρόμο.</span></p><a href="#top" class="back-top">Στην αρχή <span aria-hidden="true">↑</span></a></div>
     <nav class="footer-links" aria-label="Σύνδεσμοι υποσέλιδου">${[["school.html","Η σχολή"],["diplomata.html","Διπλώματα"],["services.html","Υπηρεσίες"],["test-driver.html","Test Driver"],["contact.html","Επικοινωνία"]].map(([url,label])=>link(url,label,current)).join("")}</nav>
-    <div class="footer-bottom"><p>Ανεπίσημη σχεδιαστική πρόταση · Δεν αποτελεί την επίσημη ιστοσελίδα της σχολής.</p><a href="https://www.karampinis.gr/" target="_blank" rel="noopener noreferrer">Επίσημη ιστοσελίδα <span aria-hidden="true">↗</span></a></div>
+    <div class="footer-bottom"><p>Ανεπίσημη σχεδιαστική πρόταση · Δεν αποτελεί την επίσημη ιστοσελίδα της σχολής.</p></div>
   </div></footer><a class="mobile-call" href="${phone}">${icon("phone")}<span>Μίλησέ μας</span><strong>210 666 6589</strong></a>`;
 }
 function page(current, title, description, main) {
