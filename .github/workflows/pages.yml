@@ -3,7 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: ["codex/clear-route"]
-    paths: ["site/**", "scripts/**", ".github/workflows/pages.yml"]
+    paths: ["site/**", "content/**", "scripts/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -26,8 +26,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Check static site
-        run: node scripts/check.mjs
+      - name: Build and check static site
+        run: |
+          node scripts/build.mjs
+          git diff --exit-code -- site
+          node scripts/check.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
