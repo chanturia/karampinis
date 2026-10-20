@@ -2,6 +2,7 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import { resolve, relative, dirname } from "node:path";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 
 const root = resolve("site");
 const html = await readFile(resolve(root, "index.html"), "utf8");
@@ -56,7 +57,9 @@ if (base) {
     url.searchParams.set("verify", Date.now().toString());
     const response = await fetch(url, { signal: AbortSignal.timeout(30000) });
     assert.equal(response.status, 200, `${name}: HTTP ${response.status}`);
-    assert.equal(hash(Buffer.from(await response.arrayBuffer())), hash(await readFile(file)), `${name}: deployed bytes differ`);
+    // Pages checks out Git's bytes; Windows working files may use CRLF.
+    const committed = execFileSync("git", ["show", `HEAD:site/${name}`]);
+    assert.equal(hash(Buffer.from(await response.arrayBuffer())), hash(committed), `${name}: deployed bytes differ`);
   }
-  console.log(`PASS: ${files.length} deployed files return HTTP 200 and match local SHA-256 hashes.`);
+  console.log(`PASS: ${files.length} deployed files return HTTP 200 and match committed source SHA-256 hashes.`);
 }
