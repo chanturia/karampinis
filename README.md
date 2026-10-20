@@ -27,7 +27,8 @@ Business identity, contact details, services and original photography were resea
 - School exterior: https://www.karampinis.gr/images/yootheme/widgetkit/gallery/gal1.jpg
 - Teaching engine: https://www.karampinis.gr/images/yootheme/widgetkit/gallery/gal6.jpg
 - Noto Sans: Google Fonts; SIL Open Font License included in `site/assets/fonts/OFL.txt`.
-- UI icons and decorative path: inline SVG, authored for this site.
+- Vehicle icons: [Phosphor Icons](https://github.com/phosphor-icons/core), duotone `car-profile`, `motorcycle`, and `truck`, embedded as SVG symbols with a tighter viewBox. MIT licence included in `site/assets/licenses/phosphor-icons-MIT.txt`.
+- Other UI icons and decorative path: inline SVG, authored for this site.
 
 Photographs are format-converted/resized WebP copies of the official images. No people, vehicles, premises, or outcomes have been generated or fabricated. The logo and photographs belong to their respective rights holders; public availability does not establish a reuse licence. The owner must approve their use and confirm they represent the current school before an official launch.
 
