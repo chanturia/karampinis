@@ -77,8 +77,8 @@ section[id] { scroll-margin-top: 10px; }
 .section-heading > p:last-child { margin-top: 18px; color: var(--muted); font-size: .96rem; }
 .licence-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: start; }
 .licence-card { background: #fff; padding: 29px 28px 8px; border: 1px solid #e4edf8; border-radius: 18px; box-shadow: 0 5px 14px #18385d03; }
-.card-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 28px; }
-.vehicle-icon { display: block; flex-shrink: 0; width: 124px; height: 104px; padding: 14px; border-radius: 20px; background: var(--pale); color: var(--blue); fill: currentColor; stroke: none; }
+.card-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 18px; }
+.vehicle-icon { display: block; flex-shrink: 0; width: 96px; height: 64px; fill: none; stroke: var(--blue); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
 .category-tag { display: inline-block; padding: 5px 9px; border-radius: 5px; background: #f2f6fc; color: var(--blue); font-size: .64rem; font-weight: 700; white-space: nowrap; }
 .licence-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
 .licence-card > p { color: var(--muted); font-size: .89rem; min-height: 76px; }
@@ -191,7 +191,7 @@ address { margin-top: 8px; font-size: .79rem; font-style: normal; color: var(--m
   .licence-card { padding-inline: 22px; }
   .category-tag { font-size: .57rem; padding-inline: 6px; }
   .card-top { gap: 7px; }
-  .vehicle-icon { width: 112px; height: 96px; padding: 12px; }
+  .vehicle-icon { width: 88px; height: 60px; }
   .licence-card > p { min-height: 102px; }
   .school-grid, .services-inner, .faq-grid { gap: 50px; }
   .engine-image { height: 430px; }
@@ -272,7 +272,7 @@ address { margin-top: 8px; font-size: .79rem; font-style: normal; color: var(--m
   .licence-grid { grid-template-columns: 1fr; gap: 16px; }
   .licence-card { padding: 25px 25px 6px; }
   .card-top { flex-direction: row; align-items: center; margin-bottom: 20px; }
-  .vehicle-icon { width: 116px; height: 96px; padding: 12px; }
+  .vehicle-icon { width: 96px; height: 64px; }
   .category-tag { padding: 5px 10px; font-size: .65rem; }
   .licence-card h3 { font-size: 1.4rem; }
   .licence-card > p { min-height: 0; font-size: 1rem; }
