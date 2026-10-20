@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { phone, maps, groups, licences, services, licenceFile, serviceFile, govCategories } from "../content/pages.mjs";
+import { appointmentForm } from "../content/appointment.mjs";
 
 const esc = (text) => String(text).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;");
 const icon = (name, cls = "icon") => `<svg class="${cls}" aria-hidden="true" focusable="false"><use href="#${name}"/></svg>`;
@@ -7,6 +8,7 @@ const vehicle = (name) => icon(name, ["car", "motorcycle", "truck"].includes(nam
 const arrow = icon("arrow");
 const library = await readFile("content/icons.svg", "utf8");
 const home = await readFile("content/home.html", "utf8");
+const illustrations = JSON.parse(await readFile("content/licence-images.json", "utf8")).images;
 const imageLabels = {
   classroom: "Η αίθουσα θεωρητικής εκπαίδευσης της Σχολής Οδηγών Καραμπίνης",
   "school-exterior": "Η είσοδος της σχολής στη γωνία Εθνικής Αντιστάσεως και Φειδιππίδου",
@@ -19,6 +21,11 @@ const imageLabels = {
 };
 function photo(name, eager = false, cls = "") {
   return `<img class="${cls}" src="assets/images/${name}-1200.webp" srcset="assets/images/${name}-720.webp 720w, assets/images/${name}-1200.webp 1200w" sizes="(max-width: 760px) 92vw, 50vw" width="1200" height="795" alt="${imageLabels[name]}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'}>`;
+}
+function illustration(key) {
+  const asset = illustrations.find(item => item.key === key);
+  if (!asset) throw new Error(`Missing licence illustration: ${key}`);
+  return `<img src="assets/images/licence-${key}-1200.webp" srcset="assets/images/licence-${key}-720.webp 720w, assets/images/licence-${key}-1200.webp 1200w" sizes="(max-width: 760px) 92vw, (max-width: 1200px) 44vw, 535px" width="1200" height="800" alt="${esc(asset.alt)}" fetchpriority="high">`;
 }
 const findLicence = (key) => licences.find((item) => item.key === key);
 function link(file, label, current, cls = "") {
@@ -65,13 +72,13 @@ function page(current, title, description, main) {
   return `<!doctype html>
 <html lang="el"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#1558d6">
+  <meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#1558d6">${current === "contact.html" ? `\n  <meta http-equiv="Content-Security-Policy" content="form-action 'none'">` : ""}
   <title>${esc(title)} · Καραμπίνης | Σχολή Οδηγών Παλλήνη</title>
   <meta name="description" content="${esc(description)}">
   <link rel="icon" href="assets/images/logo.png" type="image/png">
   <link rel="preload" href="assets/fonts/noto-sans-greek.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css"><link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/pages.css">
-  <script src="assets/site.js" defer></script>
+  <script src="assets/site.js" defer></script>${current === "contact.html" ? '\n  <script src="assets/appointment.js" defer></script>' : ""}
 </head><body>
 <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
 ${library}${header(current)}
@@ -82,18 +89,18 @@ ${footer(current)}
 function breadcrumbs(label, parent) {
   return `<nav class="breadcrumbs" aria-label="Διαδρομή πλοήγησης"><a href="index.html">Αρχική</a><span aria-hidden="true">/</span>${parent ? `<a href="${parent[0]}">${parent[1]}</a><span aria-hidden="true">/</span>` : ""}<span aria-current="page">${label}</span></nav>`;
 }
-function innerHero({label, title, intro, photo: name = "classroom", code, icon: iconName, parent, action}) {
+function innerHero({label, title, intro, photo: name = "classroom", illustration: artwork, code, icon: iconName, parent, action}) {
   return `<section class="inner-hero" id="top"><div class="container">
     ${breadcrumbs(label, parent)}
     <div class="inner-hero-grid"><div class="inner-copy">
       <p class="eyebrow"><span class="yellow-marker"></span>${code ? `ΚΑΤΗΓΟΡΙΑ ${code}` : label.toLocaleUpperCase("el")}</p>
       <h1>${title}</h1><p class="inner-intro">${intro}</p>
       <div class="hero-actions">${action || `<a class="button" href="${phone}">Μίλησέ μας ${arrow}</a><a class="text-link" href="#information">Δες τις πληροφορίες <span aria-hidden="true">↓</span></a>`}</div>
-    </div><figure class="inner-visual">${photo(name,true)}${iconName ? `<div class="visual-label">${vehicle(iconName)}<div><span>${code || "ΚΑΡΑΜΠΙΝΗΣ"}</span><strong>${label}</strong></div></div>` : `<figcaption>Στον χώρο της σχολής μας, στην Παλλήνη.</figcaption>`}</figure></div>
+    </div><figure class="inner-visual${artwork ? " concept-visual" : ""}">${artwork ? illustration(artwork) : photo(name,true)}${iconName ? `<div class="visual-label">${vehicle(iconName)}<div><span>${code || "ΚΑΡΑΜΠΙΝΗΣ"}</span><strong>${label}</strong></div></div>` : ""}${artwork ? `<figcaption>Ενδεικτική εικόνα AI · ${artwork === "doctors" ? "για την παρουσίαση της διαδικασίας." : "δεν απεικονίζει τον στόλο της σχολής."}</figcaption>` : !iconName ? `<figcaption>Στον χώρο της σχολής μας, στην Παλλήνη.</figcaption>` : ""}</figure></div>
   </div></section>`;
 }
-function contactStrip() {
-  return `<section class="section cta-section"><div class="container"><div class="cta-band"><div><p class="eyebrow">ΤΟ ΕΠΟΜΕΝΟ ΒΗΜΑ</p><h2>Ας βρούμε τη δική σου διαδρομή.</h2><p>Μίλησέ μας ή πέρασε από τη σχολή στην Παλλήνη.</p></div><div class="cta-actions"><a class="button button-yellow" href="${phone}">${icon("phone")}210 666 6589</a><a class="text-link" href="contact.html">Πού θα μας βρεις ${arrow}</a></div></div></div></section>`;
+function contactStrip(topic = "") {
+  return `<section class="section cta-section"><div class="container"><div class="cta-band"><div><p class="eyebrow">ΤΟ ΕΠΟΜΕΝΟ ΒΗΜΑ</p><h2>Ας βρούμε τη δική σου διαδρομή.</h2><p>Μίλησέ μας ή διάλεξε το θέμα της συνάντησής μας.</p></div><div class="cta-actions"><a class="button button-yellow" href="contact.html${topic ? `?topic=${topic}` : ""}#appointment">Ζήτησε ραντεβού ${arrow}</a><a class="text-link" href="${phone}">${icon("phone")}210 666 6589</a></div></div></div></section>`;
 }
 function card(item, kind = "licence") {
   const url = kind === "licence" ? licenceFile(item.key) : serviceFile(item.key);
@@ -102,7 +109,7 @@ function card(item, kind = "licence") {
 function licenceIndex() {
   return innerHero({
     label:"Διπλώματα οδήγησης", title:"Κάθε αφετηρία.<br><span>Η δική σου διαδρομή.</span>",
-    intro:"Αυτοκίνητο, μοτοσυκλέτα ή επαγγελματική οδήγηση. Γνώρισε τις κατηγορίες και διάλεξε το επόμενο βήμα σου.", photo:"classroom",
+    intro:"Αυτοκίνητο, μοτοσυκλέτα ή επαγγελματική οδήγηση. Γνώρισε τις κατηγορίες και διάλεξε το επόμενο βήμα σου.", illustration:"overview",
     action:`<a class="button" href="#categories">Βρες την κατηγορία σου ${arrow}</a>`
   }) + `<div class="category-jumps"><nav class="container" aria-label="Ομάδες διπλωμάτων">${groups.map(g=>`<a href="#${g.id}">${g.title}</a>`).join("")}</nav></div>
   <div id="categories">${groups.map(g=>`<section id="${g.id}" class="section category-section"><div class="container"><div class="listing-heading"><div><p class="eyebrow">ΔΙΠΛΩΜΑΤΑ ΟΔΗΓΗΣΗΣ</p><h2>${g.title}</h2></div><p>${g.description}</p></div><div class="route-grid">${g.keys.map(key=>card(findLicence(key))).join("")}</div></div></section>`).join("")}</div>`+contactStrip();
@@ -111,12 +118,14 @@ function detail(item, kind) {
   const isLicence = kind === "licence";
   const isCategory = isLicence && !["doctors","pei"].includes(item.key);
   const parent = isLicence ? ["diplomata.html","Διπλώματα"] : ["services.html","Υπηρεσίες"];
+  const topic = isLicence ? item.key : `service-${item.key}`;
   const entries = isLicence ? licences : services;
   const related = item.related.map(key=>entries.find(entry=>entry.key===key));
   const sources = isCategory ? `<a href="${govCategories}" target="_blank" rel="noopener noreferrer">Πληροφορίες κατηγοριών στο gov.gr <span aria-hidden="true">↗</span></a>` :
     item.key==="copy" ? `<a href="https://www.gov.gr/ipiresies/polites-kai-kathemerinoteta/metakineseis/antigrapho-adeias-odegeses-logo-klopes-apoleias" target="_blank" rel="noopener noreferrer">Αντίγραφο λόγω απώλειας / κλοπής στο gov.gr ↗</a><a href="https://www.gov.gr/ipiresies/polites-kai-kathemerinoteta/metakineseis/antigrapho-adeias-odegeses-logo-phthoras" target="_blank" rel="noopener noreferrer">Αντίγραφο λόγω φθοράς στο gov.gr ↗</a>` :
     ["replacement","renewal"].includes(item.key) ? `<a href="https://auto.gov.gr/" target="_blank" rel="noopener noreferrer">Επίσημες ψηφιακές υπηρεσίες οδήγησης ↗</a>` : "";
-  return innerHero({...item, code:isCategory?item.code:undefined,parent}) + `
+  return innerHero({...item, illustration:isLicence?item.key:undefined, code:isCategory?item.code:undefined,parent,
+    action:`<a class="button" href="contact.html?topic=${topic}#appointment">Ζήτησε ραντεβού ${arrow}</a><a class="text-link" href="#information">Δες τις πληροφορίες <span aria-hidden="true">↓</span></a>`}) + `
   <section class="section detail-section" id="information"><div class="container article-layout">
     <aside class="article-aside"><nav class="page-contents" aria-label="Σε αυτή τη σελίδα"><p class="eyebrow">ΣΕ ΑΥΤΗ ΤΗ ΣΕΛΙΔΑ</p>${item.blocks.map(([heading],i)=>`<a href="#part-${i+1}"><span>0${i+1}</span>${heading}</a>`).join("")}<a href="#preparation"><span>04</span>Πριν μιλήσουμε</a></nav>
       <div class="aside-contact"><p>Έχεις απορίες;</p><a href="${phone}">210 666 6589</a><span>Μια συζήτηση είναι η αρχή.</span></div>
@@ -126,7 +135,7 @@ function detail(item, kind) {
       <div class="information-note"><p>Οι προϋποθέσεις, τα δικαιολογητικά και το κόστος εξαρτώνται από την περίπτωση. Επιβεβαίωσέ τα με τη σχολή ή την αρμόδια υπηρεσία πριν ξεκινήσεις.</p>${sources}</div>
     </div>
   </div></section>
-  <section class="section related-section"><div class="container"><div class="section-heading"><p class="eyebrow">ΣΥΝΕΧΙΣΕ ΤΗΝ ΠΕΡΙΗΓΗΣΗ</p><h2>${isLicence?"Δες και αυτές τις διαδρομές.":"Μπορεί να σε ενδιαφέρουν."}</h2></div><div class="route-grid">${related.map(entry=>card(entry,kind)).join("")}</div></div></section>`+contactStrip();
+  <section class="section related-section"><div class="container"><div class="section-heading"><p class="eyebrow">ΣΥΝΕΧΙΣΕ ΤΗΝ ΠΕΡΙΗΓΗΣΗ</p><h2>${isLicence?"Δες και αυτές τις διαδρομές.":"Μπορεί να σε ενδιαφέρουν."}</h2></div><div class="route-grid">${related.map(entry=>card(entry,kind)).join("")}</div></div></section>`+contactStrip(topic);
 }
 function servicesIndex() {
   return innerHero({label:"Υπηρεσίες", title:"Και μετά<br><span>το πρώτο δίπλωμα.</span>", intro:"Ανανέωση, αντικατάσταση, αντίγραφο και ειδικές περιπτώσεις. Βρες τη διαδικασία που σε αφορά και ενημερώσου για τα επόμενα βήματα.",photo:"reception",action:`<a class="button" href="#information">Δες τις υπηρεσίες ${arrow}</a>`})+
@@ -147,7 +156,7 @@ function testDriver() {
     <section class="section practice-section"><div class="container school-grid"><figure>${photo("road-signs")}<figcaption class="photo-caption">Εκπαιδευτική προβολή σημάτων στην αίθουσα της σχολής.</figcaption></figure><div class="school-copy"><p class="eyebrow">Η ΓΝΩΣΗ ΠΡΙΝ ΑΠΟ ΤΗΝ ΑΠΑΝΤΗΣΗ</p><h2>Μάθε το «γιατί»<br>πίσω από κάθε κανόνα.</h2><p class="lead">Ένα τεστ είναι αφορμή για καλύτερη κατανόηση.</p><p>Η εξάσκηση συμπληρώνει το μάθημα. Για την ισχύουσα εξεταστέα ύλη και τη διαδικασία των εξετάσεων, ενημερώσου από τη σχολή.</p><a class="text-link" href="https://testdriver.gr/" target="_blank" rel="noopener noreferrer">Μετάβαση στο testdriver.gr ↗</a><p class="resource-note">Η πλατφόρμα λειτουργεί ανεξάρτητα από αυτή την ιστοσελίδα. Το περιεχόμενο και οι όροι χρήσης της παρέχονται από τον διαχειριστή της.</p></div></div></section>`+contactStrip();
 }
 function contact() {
-  return innerHero({label:"Επικοινωνία",title:"Η επόμενη διαδρομή<br><span>ξεκινά με μια συζήτηση.</span>",intro:"Μίλησέ μας για το δίπλωμα ή τη διαδικασία που σε ενδιαφέρει. Θα μας βρεις στην Παλλήνη, στη γωνία Εθνικής Αντιστάσεως και Φειδιππίδου.",photo:"school-exterior",action:`<a class="button" href="${phone}">${icon("phone")}210 666 6589</a><a class="text-link" href="${maps}" target="_blank" rel="noopener noreferrer">Οδηγίες πρόσβασης ↗</a>`})+
+  return innerHero({label:"Επικοινωνία",title:"Η επόμενη διαδρομή<br><span>ξεκινά με μια συζήτηση.</span>",intro:"Μίλησέ μας για το δίπλωμα ή τη διαδικασία που σε ενδιαφέρει. Θα μας βρεις στην Παλλήνη, στη γωνία Εθνικής Αντιστάσεως και Φειδιππίδου.",photo:"school-exterior",action:`<a class="button" href="#appointment">Ζήτησε ραντεβού ${arrow}</a><a class="text-link" href="${phone}">${icon("phone")}210 666 6589</a>`})+appointmentForm()+
     `<section class="section" id="information"><div class="container contact-details-grid">
       <article class="contact-detail">${icon("phone")}<p class="eyebrow">ΤΗΛΕΦΩΝΟ</p><h2><a href="${phone}">210 666 6589</a></h2><p>Για κατηγορίες, πρόγραμμα μαθημάτων και πληροφορίες δικαιολογητικών.</p><a class="text-link" href="${phone}">Κάλεσε τη σχολή ${arrow}</a></article>
       <article class="contact-detail">${icon("pin")}<p class="eyebrow">ΔΙΕΥΘΥΝΣΗ</p><h2>Στην Παλλήνη.</h2><address>Εθνικής Αντιστάσεως 8 & Φειδιππίδου<br>Παλλήνη, 15351</address><a class="text-link" href="${maps}" target="_blank" rel="noopener noreferrer">Άνοιγμα στο Google Maps ↗</a></article>

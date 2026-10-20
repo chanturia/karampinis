@@ -82,3 +82,26 @@ Original category vehicle illustrations were inspected but not used: some are lo
 promotional images, and none establishes that a pictured vehicle belongs to the school.
 Owner confirmation of photo rights/current appearance and all final copy remains necessary
 before replacing the official website.
+
+## Generated licence illustrations — 20 October 2026
+
+At the user's request, the right-side licence heroes now use fourteen original
+AI concept images, one for every licence/preparation page and the licence index.
+These are generic category illustrations, not evidence of the school's actual
+vehicles, medical services or facilities. Each carries a visible AI concept caption.
+Original school photographs remain on the school, contact and service pages.
+
+Exact prompts, original generated filenames and Greek alt text:
+`content/licence-images.json`. Original PNG copies: `output/imagegen/licence-KEY.png`
+(local, ignored). Published files: `site/assets/images/licence-KEY-{720,1200}.webp`.
+Only resizing and WebP conversion were applied; the full compositions are retained.
+The imagery illustrates vehicle types; it does not certify that a specific
+generated model complies with every technical licence limit.
+
+## Appointment form
+
+The user confirmed this is a draft with no receiving mailbox. The contact page
+therefore provides local validation and an explicitly labelled preview, without
+transmitting or saving personal details. Category/service links preselect the
+corresponding subject. The form states that appointments require confirmation
+after communication, and chosen date/time are preferences rather than availability.

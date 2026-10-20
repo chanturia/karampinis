@@ -32,6 +32,29 @@ const expected = ["index.html", "school.html", "diplomata.html", "services.html"
 assert.equal(documents.size, 24, "Six main pages and eighteen submenu pages");
 for (const name of expected) assert(documents.has(resolve(root,name)), `Missing menu page ${name}`);
 
+const contact = documents.get(resolve(root, "contact.html")).html;
+assert.match(contact, /content="form-action 'none'"/, "Draft must block native form transmission");
+assert.match(contact, /id="appointment-submit"[^>]*disabled/, "Draft starts disabled until its preview handler is ready");
+assert.match(contact, /Τα ραντεβού επιβεβαιώνονται κατόπιν επικοινωνίας με τη σχολή/);
+assert.match(contact, /Τα στοιχεία δεν αποστέλλονται και δεν πραγματοποιείται κράτηση/);
+const topicSelect = contact.match(/<select id="appointment-topic"[\s\S]*?<\/select>/)[0];
+for (const [items, fileFor, prefix] of [[licences, licenceFile, ""], [services, serviceFile, "service-"]]) {
+  for (const item of items) {
+    assert(topicSelect.includes(`value="${prefix}${item.key}"`), `Missing appointment topic ${item.key}`);
+    const detail = documents.get(resolve(root, fileFor(item.key))).html;
+    assert(detail.includes(`contact.html?topic=${prefix}${item.key}#appointment`), `Missing preselected booking link ${item.key}`);
+  }
+}
+for (const key of ["overview", ...licences.map(item => item.key)]) {
+  const html = documents.get(resolve(root, key === "overview" ? "diplomata.html" : licenceFile(key))).html;
+  const hero = html.match(/<figure class="inner-visual concept-visual">[\s\S]*?<\/figure>/)?.[0];
+  assert(hero?.includes(`licence-${key}-1200.webp`), `Wrong licence hero for ${key}`);
+  assert(hero?.includes("Ενδεικτική εικόνα AI"), `Concept caption missing for ${key}`);
+}
+for (const tag of contact.matchAll(/<(input|select|textarea)\b[^>]*id="([^"]+)"[^>]*>/g)) {
+  assert(contact.includes(`for="${tag[2]}"`), `Missing visible form label: ${tag[2]}`);
+}
+
 for (const [file, {html,ids}] of documents) {
   const mainNav = html.match(/<nav id="main-nav"[\s\S]*?<\/nav>/)[0];
   for (const name of expected) assert(mainNav.includes(`href="${name}"`), `${file}: menu missing ${name}`);

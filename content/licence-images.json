@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-20",
+  "tool": "OpenAI built-in image generation",
+  "purpose": "Concept illustrations for the licence-page heroes. Not photographs of the school fleet, premises, staff, or actual medical services.",
+  "processing": "Original PNG preserved locally in output/imagegen; resized without cropping to 1200x800 and 720x480 WebP, quality 86.",
+  "images": [
+    {
+      "key": "b",
+      "alt": "Ενδεικτική εικονογράφηση μπλε επιβατικού αυτοκινήτου",
+      "originalFile": "exec-a46d7823-bfe2-4be5-9e4f-550390a2563c.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One compact modern five-door hatchback passenger car, standard category B. Show the entire car with four correctly positioned wheels, headlights and natural proportions. No trailer."
+    },
+    {
+      "key": "am",
+      "alt": "Ενδεικτική εικονογράφηση μικρού μοτοποδηλάτου",
+      "originalFile": "exec-21210ace-d8d9-493f-ae7c-f153b9a2f649.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One small 50 cc step-through city moped, slender compact proportions, small wheels, modest engine, simple seat. Parked on its stand, front wheel slightly turned. No rider. Clearly a small moped rather than a sport motorcycle."
+    },
+    {
+      "key": "a1",
+      "alt": "Ενδεικτική εικονογράφηση ελαφριάς μοτοσυκλέτας",
+      "originalFile": "exec-f464533e-fa93-48fd-9cfe-3ed05924fb50.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One light 125 cc commuter motorcycle with slim fuel tank, visible small single-cylinder engine, upright handlebars and two narrow wheels. Parked on side stand. Clearly an entry-level road motorcycle, no scooter body, no rider."
+    },
+    {
+      "key": "a2",
+      "alt": "Ενδεικτική εικονογράφηση μοτοσυκλέτας μεσαίου μεγέθους",
+      "originalFile": "exec-7132fd28-a88a-4783-bb0a-16cc6aacc154.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One midweight naked road motorcycle, muscular but moderate proportions, exposed parallel-twin engine, upright handlebars, sculpted royal-blue fuel tank, wider tires than a small commuter. Parked on side stand. Exactly two wheels and one seat, no rider."
+    },
+    {
+      "key": "a",
+      "alt": "Ενδεικτική εικονογράφηση μεγάλης τουριστικής μοτοσυκλέτας",
+      "originalFile": "exec-728e82aa-68ce-416b-88a0-87d2cf712f64.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One large premium touring motorcycle, substantial engine, aerodynamic blue front fairing, clear touring windshield, tasteful side panniers, comfortable seat. Parked on side stand. Exactly two wheels, no rider. Distinctly larger touring type."
+    },
+    {
+      "key": "c1",
+      "alt": "Ενδεικτική εικονογράφηση μικρού φορτηγού με κλειστή καρότσα",
+      "originalFile": "exec-8aed93fb-c1c1-41b4-a051-a091e533f4ec.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One medium compact European cab-over rigid box truck, single rear axle, compact blue cab and clean white cargo box mounted on the same rigid chassis. Entire truck visible, no trailer, no text. Modest commercial delivery-truck scale."
+    },
+    {
+      "key": "c",
+      "alt": "Ενδεικτική εικονογράφηση βαρέος φορτηγού με κλειστή καρότσα",
+      "originalFile": "exec-579a306f-fe73-453a-a5f3-1e167183586b.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One heavy full-size European cab-over rigid box truck with blue cab and long clean white cargo body, three axles, two rear axles under the cargo body. Single rigid chassis, no separate trailer or articulated joint. Entire truck visible with generous margins."
+    },
+    {
+      "key": "d",
+      "alt": "Ενδεικτική εικονογράφηση επιβατικού λεωφορείου",
+      "originalFile": "exec-48712f3f-83d9-4d4f-8d11-372742530c1e.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One elegant full-size European passenger coach bus, royal-blue lower body and white upper body, large dark windows, two axles, realistic long wheelbase. Entire bus visible with ample empty margin. No passengers, no logos, no trailer."
+    },
+    {
+      "key": "be",
+      "alt": "Ενδεικτική εικονογράφηση αυτοκινήτου με ρυμουλκούμενο",
+      "originalFile": "exec-95c712e3-f605-463a-9df5-1a37ebfdc34d.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One modern royal-blue passenger SUV towing a single compact enclosed white utility cargo trailer. Physically correct visible tow bar connected from the rear of the SUV to the trailer tongue. One coherent towing combination, side-front three-quarter camera with sufficient side view that the trailer behind the car is clearly visible. Both vehicles fully within the frame. No camper van, no truck."
+    },
+    {
+      "key": "ce",
+      "alt": "Ενδεικτική εικονογράφηση συρμού φορτηγού με ημιρυμουλκούμενο",
+      "originalFile": "exec-690757d3-b8ea-4a9c-99ea-3f04daf374f5.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One European articulated semi-truck: royal-blue tractor cab connected to a long separate white box semitrailer. Clear articulation gap and fifth-wheel connection, two tractor axles and triple trailer axles at its rear. Full combination visible from front-side three-quarter view with strong side visibility. No extra vehicles."
+    },
+    {
+      "key": "de",
+      "alt": "Ενδεικτική εικονογράφηση λεωφορείου με ρυμουλκούμενο",
+      "originalFile": "exec-430c0752-f7f0-4527-9886-95ac4e485d89.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. One European long passenger touring coach bus, royal-blue lower body and white upper body, towing a small white enclosed luggage trailer behind it. Clear physical towing connection behind the coach. Side-dominant three-quarter view so both full bus and entire trailer are visible and recognizable as two connected vehicles. No text or passengers. Generous clear margin around the whole combination."
+    },
+    {
+      "key": "pei",
+      "alt": "Ενδεικτική εικονογράφηση φορτηγού και λεωφορείου για επαγγελματική οδήγηση",
+      "originalFile": "exec-e9d3f7fb-498d-4ea3-8a93-6576d51ef1e9.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. A balanced pair of professional road transport vehicles: one blue-and-white European freight truck on the left and one blue-and-white passenger coach bus on the right. Parked side by side at slightly different angles, fully separate non-overlapping silhouettes, full wheels and full bodies visible. Compact premium fleet-like editorial composition representing professional driver training, no text, no badges."
+    },
+    {
+      "key": "doctors",
+      "alt": "Ενδεικτική εικονογράφηση στηθοσκοπίου, γυαλιών και πρόχειρου σημειώσεων",
+      "originalFile": "exec-f72c4cbf-e822-4cba-a0fb-a749f1821189.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. Instead of vehicles, create a refined medical examination still life: one navy-blue stethoscope with a physically coherent single flexible tube, a pair of optical eyeglasses, one white clipboard with completely blank paper, and a blue pen. These represent the driver's medical and eyesight checks. Arrange naturally on a pale-blue tabletop, close three-quarter elevated view. No letters or charts, no medical claims, no certificate, no people. Minimal tasteful clinical still life with generous margins."
+    },
+    {
+      "key": "overview",
+      "alt": "Ενδεικτική εικονογράφηση αυτοκινήτου, μοτοσυκλέτας και φορτηγού",
+      "originalFile": "exec-c0882d50-dc7a-46e7-9d88-090fcd59576d.png",
+      "prompt": "Create one high-end editorial 3D product illustration for a Greek driving school's white/navy/royal-blue website. Landscape 1536x1024, single seamless very pale icy-blue studio background and floor, soft daylight, realistic refined materials, navy and vivid royal-blue vehicle paint, subtle warm yellow floor accent. Camera front three-quarter view, full object visible, centered in the middle 75% of the frame with generous margin on all sides for responsive cropping. Beautiful professional automotive campaign quality, believable geometry and wheels. No text, letters, logos, brand badges, watermarks, license plate characters, people, or school premises. Clearly an illustrative concept, not a photograph of a real school's fleet. A cohesive editorial composition of exactly three different vehicles: one compact royal-blue passenger hatchback in front-left, one slender blue street motorcycle in front-right, and one white cargo truck with a blue cab behind them. Each complete vehicle has its own space, separate silhouettes without merged parts, all tires on the same studio floor. Balanced triangular composition showing car, motorcycle and professional driving categories. No people, no text, no actual brand logos."
+    }
+  ]
+}
